@@ -54,7 +54,7 @@
 		
 		<div class="panel-body">
 			
-			<form role="form" action="RegisterUser" method = "POST">
+			<form role="form" action="http://localhost:8080/BullhornAssignment/RegisterUser" method = "POST">
 				<div class="form-group">
 					<label for="full_name">Name:</label>
 					<input type="text" class="form-control" name="full_name" required/>
