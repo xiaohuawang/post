@@ -52,7 +52,7 @@ public class ServletLogin extends HttpServlet {
 		{
 			System.out.println("in if");
 			HttpSession session = request.getSession();
-			session.setAttribute("userId", userId);
+			session.setAttribute("loginId", userId);
 			
 			Bulluser user1 = DBBulluser.getUser(userId);
 			

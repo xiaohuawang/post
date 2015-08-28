@@ -20,7 +20,7 @@
 <title>Post</title>
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
 	      <a class="navbar-brand">PostIt!</a>
@@ -28,15 +28,19 @@
 	    <div>
 	      <ul class="nav navbar-nav">
 	      	<li><a href="AllPosts">All Posts</a></li>
-	      	<li><a href="/BullhornAssignment/PostForm.jsp">Make a Post</a></li>
+	      	<li>
+	      		<a href="${param.userId == null ? '/BullhornAssignment/LoginForm.jsp' : '/BullhornAssignment/PostForm.jsp'}">Make a Post</a></li>
     	    <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${username}<span class="caret"></span></a>
 		          <ul class="dropdown-menu">
 		            <li><a href="Profile">Profile</a></li>
 		            <li role="separator" class="divider"></li>
-       				<li><a href="Login?logout=yes">Log out</a>
+       				<li><a href="Logout">Log out</a>
 		          </ul>
 	        </li>
+			
+
+
 	      </ul>
 	    </div>
 	  </div>

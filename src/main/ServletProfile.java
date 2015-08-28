@@ -36,16 +36,24 @@ public class ServletProfile extends HttpServlet {
 		// TODO Auto-generated method stub
 		String userIdStr = request.getParameter("userId");
 		int userId = 0;
+		
+		HttpSession session = request.getSession();
 		if(userIdStr == null)
 		{
-			HttpSession session = request.getSession();
-			userId = Integer.parseInt(session.getAttribute("userId").toString());
+			if(session.getAttribute("loginId") == null)
+			{
+				getServletContext().getRequestDispatcher("/LoginForm.jsp").forward(request, response);
+			}
+			else
+			{
+				userId = Integer.parseInt(session.getAttribute("loginId").toString());
+			}
 		}
 		else
 		{
-			
-			userId = Integer.parseInt(userIdStr); 
+			userId = Integer.parseInt(userIdStr);
 		}
+
 		System.out.println("userId = " + userIdStr);
 		
 		 
