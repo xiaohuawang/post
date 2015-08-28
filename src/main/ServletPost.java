@@ -49,7 +49,7 @@ public class ServletPost extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		int user_id = Integer.parseInt(session.getAttribute("userId").toString());
+		int user_id = Integer.parseInt(session.getAttribute("loginId").toString());
 		
 		Post post = new Post();
 		Bulluser user = new Bulluser();

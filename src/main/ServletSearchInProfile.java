@@ -8,23 +8,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.Bulluser;
 import model.Post;
 import db.DBBulluser;
+import db.DBPost;
 
 /**
- * Servlet implementation class ServletProfile
+ * Servlet implementation class ServletSearchInProfile
  */
-@WebServlet("/Profile")
-public class ServletProfile extends HttpServlet {
+@WebServlet("/SearchInProfile")
+public class ServletSearchInProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletProfile() {
+    public ServletSearchInProfile() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,29 +34,11 @@ public class ServletProfile extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String query = request.getParameter("query");
 		String userIdStr = request.getParameter("userId");
-		int userId = 0;
+		System.out.println("userIdStr = " + userIdStr);
+		long userId  = Integer.parseInt(userIdStr);
 		
-		HttpSession session = request.getSession();
-		if(userIdStr == null)
-		{
-			if(session.getAttribute("loginId") == null)
-			{
-				getServletContext().getRequestDispatcher("/LoginForm.jsp").forward(request, response);
-			}
-			else
-			{
-				userId = Integer.parseInt(session.getAttribute("loginId").toString());
-			}
-		}
-		else
-		{
-			userId = Integer.parseInt(userIdStr);
-		}
-
-		System.out.println("userId = " + userIdStr);
-		
-		 
 		
 		Bulluser user = DBBulluser.getUser(userId);
 		
@@ -68,9 +50,9 @@ public class ServletProfile extends HttpServlet {
 		
 		userData += "</div>";
 		request.setAttribute("userData", userData);
-		request.setAttribute("userId", userId);
-		List<Post> posts = user.getPosts();
 		
+		List<Post> posts = DBPost.searchPostsInProfile(userId, query);
+		System.out.println("posts size = " + posts.size());
 		String postData = "<table class='table table-bordered table-striped'>";
 		postData += "<thead>";
 		postData += "<tr>";
@@ -90,7 +72,7 @@ public class ServletProfile extends HttpServlet {
 		{
 			postData += "<tr>";
 			postData += "<td>";
-			postData += "<a href='/BullhornAssignment/Profile?userId="+ post.getBulluser().getUserId() +"'>" +post.getBulluser().getFullName() + "</a>";
+			postData += post.getBulluser().getFullName();
 			postData += "</td>";
 			postData += "<td>";
 			postData += post.getPostContent();
@@ -100,15 +82,19 @@ public class ServletProfile extends HttpServlet {
 			postData += "</td>";
 			postData += "</tr>";
 		}
+		
 		request.setAttribute("postData", postData);
+		request.setAttribute("userId", userId);
+		//forward it
 		getServletContext().getRequestDispatcher("/Profile.jsp").forward(request, response);
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
 	}
 
 }

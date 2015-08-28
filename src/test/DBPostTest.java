@@ -26,7 +26,7 @@ public class DBPostTest
 		}
 	}
 	
-	@Test
+//	@Test
 	public void testSearch()
 	{
 		System.out.println("test search");
@@ -34,6 +34,17 @@ public class DBPostTest
 		for(Post post: posts)
 		{
 			System.out.println("content " + post.getPostContent());
+		}
+	}
+	
+	@Test
+	public void testSearchProfile()
+	{
+		List<Post> posts = DBPost.searchPostsInProfile(22, "Add");
+		
+		for(Post post:posts)
+		{
+			System.out.println("post " + post.getPostContent());
 		}
 	}
 

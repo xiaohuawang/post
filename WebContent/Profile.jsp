@@ -52,7 +52,17 @@
 	    </div>
 	  </div>
 	</nav>
+	<h1>Profile</h1>
 ${userData}
+	<form action="SearchInProfile" method="GET">
+		<div class="form-group col-lg-1">
+		
+			<input type = "hidden" name="userId" value="${userId}"/>
+			<label for="query">Search for:</label>
+			<input type="text" class="form-control" name="query"/>
+			<button type="submit" value="submit" class="btn btn-default">Search</button>
+		</div>
+	</form>
 ${postData}
 </body>
 </html>

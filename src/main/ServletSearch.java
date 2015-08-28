@@ -70,7 +70,7 @@ public class ServletSearch extends HttpServlet {
 		
 		request.setAttribute("postData", postData);
 		//forward it
-		getServletContext().getRequestDispatcher("/AllPosts.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/Profile.jsp").forward(request, response);
 
 	}
 

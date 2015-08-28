@@ -14,6 +14,30 @@ import customTools.DBUtil;
 
 public class DBPost
 {
+	
+	public static List<Post> searchPostsInProfile(long userId, String query)
+	{
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		String queryStr = "SELECT e FROM Post e WHERE e.bulluser.userId = :userId AND e.postContent LIKE :query ";
+		List<Post> posts = null;
+		try
+		{
+			Query q = em.createQuery(queryStr);
+			q.setParameter("query", '%' + query + '%');
+			q.setParameter("userId", userId);
+			posts =  q.getResultList();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			em.close();
+		}
+		return posts;
+	}
+	
 	public static List<Post> searchPosts(String query)
 	{
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();

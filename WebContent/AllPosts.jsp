@@ -58,9 +58,6 @@
 			<input type="text" class="form-control" name="search"/>
 			<button type="submit" value="submit" class="btn btn-default">Search</button>
 		</div>
-		
-		
-		
 	</form>
 	${postData}
 </body>
