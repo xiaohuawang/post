@@ -31,7 +31,7 @@ public class ServletLogin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		doPost(request,response);
 	}
 
 	/**
@@ -48,14 +48,16 @@ public class ServletLogin extends HttpServlet {
 		user.setUserPassword(password);
 		System.out.println(username + password);
 		int userId = DBBulluser.login(user);
-		if (userId>0)
+		System.out.println("user id"+ userId);
+		if (userId>-1)
 		{
 			System.out.println("in if");
 			HttpSession session = request.getSession();
 			session.setAttribute("loginId", userId);
 			
 			Bulluser user1 = DBBulluser.getUser(userId);
-			
+			if(user==null)
+				System.out.println("no user found");
 			session.setAttribute("username", user1.getUserName());
 			getServletContext().getRequestDispatcher("/AllPosts").forward(request, response);
 		}

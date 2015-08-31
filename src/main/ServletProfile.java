@@ -64,12 +64,12 @@ public class ServletProfile extends HttpServlet {
 		userData += "<p> Name: " + user.getFullName() + "</p>";
 		userData += "<p> Email: " + user.getEmail() + "</p>";
 		userData += "<p> Motto: " + user.getMotto() + "</p>";
-		userData += "<p> Join Date: " + user.getJoinDate() + "</p>";
+		userData += "<p> Join Date: " + user.getJoindate() + "</p>";
 		
 		userData += "</div>";
 		request.setAttribute("userData", userData);
 		request.setAttribute("userId", userId);
-		List<Post> posts = user.getPosts();
+		//List<Post> posts = user.getPosts();
 		
 		String postData = "<table class='table table-bordered table-striped'>";
 		postData += "<thead>";
@@ -85,7 +85,7 @@ public class ServletProfile extends HttpServlet {
 		postData += "</th>";
 		postData += "</tr>";
 		postData += "</thead>";
-		
+		/*
 		for(Post post : posts)
 		{
 			postData += "<tr>";
@@ -99,8 +99,8 @@ public class ServletProfile extends HttpServlet {
 			postData += post.getPostDate();
 			postData += "</td>";
 			postData += "</tr>";
-		}
-		request.setAttribute("postData", postData);
+		}*/
+		request.setAttribute("userData", postData);
 		getServletContext().getRequestDispatcher("/Profile.jsp").forward(request, response);
 	}
 

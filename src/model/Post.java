@@ -12,13 +12,13 @@ import java.util.Date;
  * 
  */
 @Entity
-@Table(name="Post", schema="TESTDB")
+@Table(name="Post", schema="SYSTEM")
 @NamedQuery(name="Post.findAll", query="SELECT p FROM Post p")
 public class Post implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(schema="TESTDB", name="SEQ_POSTID", sequenceName="SEQ_POSTID",allocationSize = 1)
+	@SequenceGenerator(schema="SYSTEM", name="SEQ_POSTID", sequenceName="SEQ_POSTID",allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="SEQ_POSTID")
 	@Column(name="POST_ID")
 	private long postId;

@@ -29,7 +29,7 @@
 	      <ul class="nav navbar-nav">
 	      	<li><a href="AllPosts">All Posts</a></li>
 	      	<li>
-	      		<a href="${param.userId == null ? '/BullhornAssignment/LoginForm.jsp' : '/BullhornAssignment/PostForm.jsp'}">Make a Post</a></li>
+	      		<a href="/BullhornAssignment/PostForm.jsp">Make a Post</a></li>
     	    <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${username}<span class="caret"></span></a>
 		          <ul class="dropdown-menu">
@@ -74,6 +74,13 @@
 					<label for="password">Password:</label>
 					<input type="password" class="form-control" name="password" required/>
 				</div>
+				
+				<div class="form-group">
+					<label for="motto">motto:</label>
+					<input type="text" class="form-control" name="motto" required/>
+				</div>
+				
+				
 				
 				<div class = "form-group">
 					<button type="submit" value = "submit" class= "btn btn-default" >Register</button>

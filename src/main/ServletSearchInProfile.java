@@ -46,7 +46,7 @@ public class ServletSearchInProfile extends HttpServlet {
 		userData += "<p> Name: " + user.getFullName() + "</p>";
 		userData += "<p> Email: " + user.getEmail() + "</p>";
 		userData += "<p> Motto: " + user.getMotto() + "</p>";
-		userData += "<p> Join Date: " + user.getJoinDate() + "</p>";
+		userData += "<p> Join Date: " + user.getJoindate() + "</p>";
 		
 		userData += "</div>";
 		request.setAttribute("userData", userData);

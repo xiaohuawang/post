@@ -73,7 +73,7 @@ public class DBBulluser
 		}
 		catch(Exception e)
 		{
-			
+			e.printStackTrace();
 			return 0;
 		}
 		finally

@@ -32,7 +32,7 @@ public class ServletRegisterUser extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		doPost(request,response);
 	}
 
 	/**
@@ -55,8 +55,10 @@ public class ServletRegisterUser extends HttpServlet {
 		user.setUserName(user_name);
 		user.setUserPassword(password);
 		user.setMotto(motto);
-		user.setJoinDate(joinDate);
-		
+		user.setJoindate(joinDate);
+		System.out.println(full_name);
+		System.out.println(email);System.out.println(user_name);System.out.println(password);
+		System.out.println(motto);System.out.println(joinDate);
 		DBBulluser.insert(user);
 		
 		HttpSession session = request.getSession();
